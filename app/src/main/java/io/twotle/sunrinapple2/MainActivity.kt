@@ -2,6 +2,7 @@ package io.twotle.sunrinapple2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import io.twotle.sunrinapple2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -9,12 +10,12 @@ class MainActivity : AppCompatActivity() {
     var eggTouch = 100
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
     }
 
-    fun touchEgg() {
+    fun touchEgg() : Unit {
         if(eggTouch >0) eggTouch--
         when(eggTouch) {
             80 -> {
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun restart() {
+    fun restart() : Unit {
         eggTouch = 100
         binding.ivEgg.setImageResource(R.drawable.egg);
     }
